@@ -5,7 +5,7 @@ package basiclibrary;
 
 
 import java.lang.*;
-
+import java.util.*;
 
 public class Library {
     public static long[] roll(int num) {
@@ -62,6 +62,73 @@ public class Library {
         }
         return lowestAvg;
     }
+
+
+    public static String analyzeWeatherData(int[][]arr){
+        Set<Integer> distinctNumbers = new HashSet<>();
+        ArrayList<Integer>newNumbers = new ArrayList<>();
+        for(int[]testArr : arr) {
+            for (int number : testArr) {
+                newNumbers.add(number);
+            }
+        }
+        distinctNumbers.addAll(newNumbers);
+
+        System.out.println("this is the test weather data"
+                + distinctNumbers);
+        int lowNumber = 100;
+        int highNumber = 0;
+        for(int num : distinctNumbers){
+            if(lowNumber > num){
+                lowNumber = num;
+            }else if(highNumber < num){
+                highNumber = num;
+            }
+        }
+        StringBuilder results = new StringBuilder("High: "
+                + highNumber + "\nLow: " + lowNumber + "\n");
+        for(int i = lowNumber; i <= highNumber; i++){
+                if (!distinctNumbers.contains(i)){
+                    System.out.println("this number is not there " + i);
+                    results.append("Never saw temperature: " + i + "\n");
+                }
+            }
+        System.out.println(results.toString());
+        String resultsString = results.toString();
+
+        return resultsString;
+    }
+
+    public static String tallyElection(List<String> list){
+        Set<String> distinctElements = new HashSet<>();
+        distinctElements.addAll(list);
+        HashMap<String, Integer>votesForEach = new HashMap<>();
+        for(String element : distinctElements){
+            votesForEach.put(element,0 );
+        }
+        int mostVotes = 0;
+        String winner = "";
+        for(String element : list){
+            int counter = votesForEach.get(element);
+            counter++;
+            votesForEach.put(element, counter);
+            if(counter > mostVotes){
+                mostVotes = counter;
+                winner = element;
+
+            }
+        }
+        System.out.println(winner + " received the most votes!");
+        System.out.println(mostVotes);
+        System.out.println(votesForEach.values());
+        System.out.println(list);
+        System.out.println(distinctElements);
+        System.out.println(votesForEach);
+
+
+        return winner + " received the most votes!";
+    }
+
 }
 
 
