@@ -12,7 +12,7 @@ public class ReviewTest {
         assertEquals("The body should be \"This is a great test\"", body, test.body);
         String author = "Joe Shmoe";
         assertEquals("The author should be one Joe Shmoe", author, test.author);
-        String testString = "This is the restaurant review: Body: This is a great test, " +
+        String testString = "This is the review: Body: This is a great test, " +
                 "Author: Joe Shmoe, Number of Stars: 5";
         assertEquals("The strings should be equal", testString, test.toString());
     }
